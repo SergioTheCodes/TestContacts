@@ -10,9 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{524DF736-E0F1-419D-8F75-A7628B3D3E21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{133E284F-F2E8-4F12-A65D-569BF411909A}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Downloads\db.sql = ..\..\..\Downloads\db.sql
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
