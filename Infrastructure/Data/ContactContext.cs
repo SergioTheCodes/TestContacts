@@ -17,8 +17,7 @@ public partial class ContactContext : DbContext
 
     public virtual DbSet<Contact> Contacts { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    { }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -30,7 +29,9 @@ public partial class ContactContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Phonenumber).HasColumnName("phonenumber");
+            entity.Property(e => e.Phonenumber)
+                .HasColumnType("numeric(10, 0)")
+                .HasColumnName("phonenumber");
         });
 
         OnModelCreatingPartial(modelBuilder);

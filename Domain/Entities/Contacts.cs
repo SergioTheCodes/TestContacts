@@ -9,7 +9,7 @@ namespace Domain.Entities
     public class Contacts : BaseEntity
     {
         public string Name { get; set; } = string.Empty;
-        public int PhoneNumber { get; set; }
+        public decimal PhoneNumber { get; set; }
         public int Id { get; set; }
     }
 }
