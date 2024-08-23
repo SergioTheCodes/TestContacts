@@ -82,6 +82,7 @@ namespace ContactApi.Service
             var repository = UnitOfWork.AsyncRepository<Infrastructure.Data.Contact>();
             var obj = new Infrastructure.Data.Contact
             {
+                Id= contact.Id,
                 Name = contact.Name,
                 Phonenumber = contact.PhoneNumber
             };
