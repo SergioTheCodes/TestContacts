@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Infrastructure.Data;
 
-public partial class Contact
+public partial class Contact : BaseEntity
 {
     public string Name { get; set; } = null!;
 
