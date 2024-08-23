@@ -10,9 +10,9 @@ namespace Domain.Interfaces.Service
     public interface IContactService
     {
         //public Task Login();
-        public Task<List<Contact>> GetContacts();
-        public Task<string> AddContact(Contact contact);
-        public Task<string> UpdateContact(Contact contact);
-        public Task<string> DeleteContact(Contact contact);
+        public Task<List<Contacts>> GetContacts();
+        public Task<string> AddContact(Contacts contact);
+        public Task<string> UpdateContact(Contacts contact);
+        public Task<string> DeleteContact(Contacts contact);
     }
 }

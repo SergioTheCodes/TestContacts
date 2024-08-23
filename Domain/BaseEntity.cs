@@ -8,21 +8,21 @@ namespace Domain
 {
     public abstract class BaseEntity
     {
-        public int Id { get; protected set; }
+        //public int Id { get;  set; }
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null || obj.GetType() != GetType())
-                return false;
+        //public override bool Equals(object obj)
+        //{
+        //    if (obj == null || obj.GetType() != GetType())
+        //        return false;
 
-            var entity = (BaseEntity)obj;
-            return Id == entity.Id;
-        }
+        //    var entity = (BaseEntity)obj;
+        //    return Id == entity.Id;
+        //}
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Id);
-        }
+        //public override int GetHashCode()
+        //{
+        //    return HashCode.Combine(Id);
+        //}
 
         public static bool operator ==(BaseEntity a, BaseEntity b)
         {

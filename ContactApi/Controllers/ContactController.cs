@@ -17,7 +17,7 @@ namespace ContactApi.Controllers
 
         [HttpGet]
         [Route("GetContacts")]
-        public async Task<List<Contact>> GetContacts()
+        public async Task<List<Contacts>> GetContacts()
         {
             try
             {
@@ -33,7 +33,7 @@ namespace ContactApi.Controllers
 
         [HttpPost]
         [Route("AddContact")]
-        public async Task<string> AddContact(Contact contact)
+        public async Task<string> AddContact(Contacts contact)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace ContactApi.Controllers
 
         [HttpPut]
         [Route("UpdateContact")]
-        public async Task<string> UpdateContact(Contact contact)
+        public async Task<string> UpdateContact(Contacts contact)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace ContactApi.Controllers
 
         [HttpDelete]
         [Route("DeleteContact")]
-        public async Task<string> DeleteContact(Contact contact)
+        public async Task<string> DeleteContact(Contacts contact)
         {
             try
             {

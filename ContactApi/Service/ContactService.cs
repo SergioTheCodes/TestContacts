@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Service;
+using Infrastructure.Data;
 using System.Linq;
 //using Infrastructure.Data;
 
@@ -16,13 +17,19 @@ namespace ContactApi.Service
 
         }
 
-        public async Task<string> AddContact(Contact contact)
+        public async Task<string> AddContact(Contacts contact)
         {
-            var repository = UnitOfWork.AsyncRepository<Contact>();
-            
+            var repository = UnitOfWork.AsyncRepository<Infrastructure.Data.Contact>();
+
+            var obj = new Infrastructure.Data.Contact
+            {
+                Name = contact.Name,
+                Phonenumber = contact.PhoneNumber
+            };
+
             try
             {
-                await repository.AddAsync(contact);
+                await repository.AddAsync(obj);
                 await UnitOfWork.SaveChangesAsync();
                 return "Contact Added SuccessFully";
             }
@@ -31,12 +38,17 @@ namespace ContactApi.Service
                 return ex.Message;
             }
         }
-        public async Task<string> UpdateContact(Contact contact)
+        public async Task<string> UpdateContact(Contacts contact)
         {
-            var repository = UnitOfWork.AsyncRepository<Contact>();
+            var repository = UnitOfWork.AsyncRepository<Infrastructure.Data.Contact>();
+            var obj = new Infrastructure.Data.Contact
+            {
+                Name = contact.Name,
+                Phonenumber = contact.PhoneNumber
+            };
             try
             {
-                await repository.UpdateAsync(contact);
+                await repository.UpdateAsync(obj);
                 await UnitOfWork.SaveChangesAsync();
                 return "Contact Updated";
             }
@@ -45,13 +57,19 @@ namespace ContactApi.Service
                 return ex.Message;
             }
         }
-        public async Task<List<Contact>> GetContacts()
+        public async Task<List<Contacts>> GetContacts()
         {
-            var repository = UnitOfWork.AsyncRepository<Contact>();
+            var repository = UnitOfWork.AsyncRepository<Infrastructure.Data.Contact>();
             try
             {
-                var contacts = await repository.ListAsync(_ => _.Id > 0);
-                return contacts;
+                var contactList = await repository.ListAsync(_ => _.Id > 0);
+                var obj = contactList.Select(contact => new Contacts
+                {
+                    Id =  contact.Id,
+                    Name = contact.Name,
+                    PhoneNumber = contact.Phonenumber
+                }).ToList();
+                return obj;
             }
             catch (Exception)
             {
@@ -59,12 +77,17 @@ namespace ContactApi.Service
                 throw;
             }
         }
-        public async Task<string> DeleteContact(Contact contact)
+        public async Task<string> DeleteContact(Contacts contact)
         {
-            var repository = UnitOfWork.AsyncRepository<Contact>();
+            var repository = UnitOfWork.AsyncRepository<Infrastructure.Data.Contact>();
+            var obj = new Infrastructure.Data.Contact
+            {
+                Name = contact.Name,
+                Phonenumber = contact.PhoneNumber
+            };
             try
             {
-                await repository.DeleteAsync(contact);
+                await repository.DeleteAsync(obj);
                 await UnitOfWork.SaveChangesAsync();
                 return "Delete Succesfully";
             }

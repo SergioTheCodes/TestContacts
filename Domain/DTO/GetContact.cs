@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.DTO
 {
-    public class GetContact : Contact
+    public class GetContact : Contacts
     {
         
     }
