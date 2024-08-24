@@ -77,6 +77,27 @@ namespace ContactApi.Service
                 throw;
             }
         }
+
+        public async Task<Contacts> GetContactById(int id)
+        {
+            var repository = UnitOfWork.AsyncRepository<Infrastructure.Data.Contact>();
+            try
+            {
+                var contactList = await repository.ListAsync(_ => _.Id > 0);
+                var obj = contactList.Where(contact => contact.Id == id).Select(x => new Contacts
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    PhoneNumber = x.Phonenumber
+                }).FirstOrDefault();
+                return obj;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public async Task<string> DeleteContact(Contacts contact)
         {
             var repository = UnitOfWork.AsyncRepository<Infrastructure.Data.Contact>();

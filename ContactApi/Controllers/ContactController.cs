@@ -16,6 +16,22 @@ namespace ContactApi.Controllers
         }
 
         [HttpGet]
+        [Route("GetContactById")]
+        public async Task<Contacts> GetContactById(int id)
+        {
+            try
+            {
+                var contacts = await _contactService.GetContactById(id);
+                return contacts;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
         [Route("GetContacts")]
         public async Task<List<Contacts>> GetContacts()
         {

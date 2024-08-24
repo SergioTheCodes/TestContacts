@@ -11,6 +11,7 @@ namespace Domain.Interfaces.Service
     {
         //public Task Login();
         public Task<List<Contacts>> GetContacts();
+        public Task<Contacts> GetContactById(int id);
         public Task<string> AddContact(Contacts contact);
         public Task<string> UpdateContact(Contacts contact);
         public Task<string> DeleteContact(Contacts contact);
